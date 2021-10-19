@@ -51,7 +51,7 @@ namespace AB_Test_Real_TestWork.Controllers
             DateTime date = DateTime.Now.Subtract(new TimeSpan(days, 0, 0, 0));
             var registeredUser = _db.Users.Count(x => x.DateRegistration <= date);
             var lastActivityUser = _db.Users.Count(x => x.DateLastActivity >= date);
-            var rollingRetention = (double)lastActivityUser / registeredUser * 100;
+            var rollingRetention = (double)lastActivityUser / registeredUser * 2;
 
             return Json( new {rollingRetention} );
         }
