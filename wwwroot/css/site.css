@@ -1,0 +1,171 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  min-height: 100%;
+}
+body {
+    margin-top: 50px;
+    background: #f1f1f1;
+}
+
+th {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 16px;
+    color: #5D6E97;
+}
+td {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #5D6E97;
+}
+table {
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+label {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 16px;
+    color: #5D6E97;
+}
+.tw_navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: #F9F9F9;
+    z-index: 9999;
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+}
+
+.tw_titletext {
+    margin-left: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #5D6E97;
+}
+.tw_contentbody {
+    display: flex;
+    height: 919px;
+    align-items:stretch;
+}
+.tw_searchinput {
+    margin-left: 50px;
+    width: 320px;
+    height: 28px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+}
+.tw_sidebar {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    background: #FFFFFF;
+    box-shadow: 4px 0px 10px rgba(93, 109, 151, 0.1);
+}
+.tw_homelink {
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    color: #5D6D97;
+}
+.tw_content{
+    margin: 20px;
+}
+.tw_input {
+    margin-left: 5px;
+    width: 130px;
+    text-align: center;
+    height: 28px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+}
+.tw_button {
+    margin-left: 5px;
+    width: 130px;
+    height: 28px;
+    background: #4A9DFF;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+}
+
+.tw_daycount {
+    margin-left: 5px;
+    width: 40px;
+    text-align: center;
+    height: 28px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+}

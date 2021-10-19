@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Test work";
+}
+<div class="tw_sidebar">
+    <a class="tw_homelink" href="#">Home</a>
+</div>
+<div class=" row ml-5 m-0 p-2">
+    <div>
+        <form asp-action="addUser" asp-controller="Home" method="post">
+            <label>Name</label>
+            <input class="tw_input" type="text" name="Name" placeholder="Name" value="" />
+            <label>DateRegistration</label>
+            <input class="tw_input" type="date" name="dateRegistration" value="" />
+            <label>DateLastActivity</label>
+            <input class="tw_input" type="date" name="datelastActivity" value="" />
+            <button class="tw_button" type="submit" name="search">Add</button>
+        </form>
+        <div>
+            <table class="table mt-3">
+                <tr><th>ID</th><th>Name</th><th>DateRegistration</th><th>DateLastActivity</th></tr>
+                @foreach (var item in ViewBag.Users)
+                {
+                    <tr><td>@item.Id</td><td>@item.Name</td><td>@item.DateRegistration.ToShortDateString()</td><td>@item.DateLastActivity.ToShortDateString()</td></tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="mt-1 ml-5">
+        <label>Rolling Retention</label>
+        <input id="daycount" class="tw_daycount" type="text"value="" />
+        <label>day</label>
+        <button onclick="calculate()" class="tw_button">Calculate</button>
+        <label id="result"></label>
+    </div>
+</div>
