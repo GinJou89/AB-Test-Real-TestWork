@@ -44,6 +44,9 @@ namespace AB_Test_Real_TestWork.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        /// <summary>
+        ///  Расчет rollingRetention
+        /// </summary>
         [HttpPost]
         public JsonResult GetUserRetention(int days) 
         {
@@ -55,7 +58,9 @@ namespace AB_Test_Real_TestWork.Controllers
 
             return Json( new {rollingRetention} );
         }
-
+        /// <summary>
+        ///  Расчет времени жизни пользователей
+        /// </summary>
         public JsonResult CalculateLifeSpanAllUsers()
         {
             List<User> users = _db.Users.ToList();
@@ -67,11 +72,11 @@ namespace AB_Test_Real_TestWork.Controllers
             }
 
             var lifespan = UsersLifeSpan.Distinct()
-                .OrderBy(x => x)
-                .Select(x => new UserLifeSpan()
+                .OrderBy(i => i)
+                .Select(i => new UserLifeSpan()
                 {
-                    LifeSpanDays = x,
-                    Count = UsersLifeSpan.Count(lifeSpan => lifeSpan == x)
+                    LifeSpanDays = i,
+                    Count = UsersLifeSpan.Count(lifeSpan => lifeSpan == i)
                 });
 
             return Json(new { lifespan });
