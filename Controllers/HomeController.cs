@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace AB_Test_Real_TestWork.Controllers
 {
@@ -22,15 +23,13 @@ namespace AB_Test_Real_TestWork.Controllers
 
         public IActionResult Index()
         {
-            List<User> users = _db.Users.Take(19).ToList();
-            ViewBag.Users = users;
+            List<User> users = _db.Users.ToList();
+            ViewBag.Users = users.TakeLast(19).Reverse();
             return View();
         }   
         [HttpPost]
         public IActionResult AddUser(User user)
         {
-
-            
             if (ModelState.IsValid)
             {
                 _db.Users.Add(user);
@@ -51,10 +50,32 @@ namespace AB_Test_Real_TestWork.Controllers
             DateTime date = DateTime.Now.Subtract(new TimeSpan(days, 0, 0, 0));
             var registeredUser = _db.Users.Count(x => x.DateRegistration <= date);
             var lastActivityUser = _db.Users.Count(x => x.DateLastActivity >= date);
-            var rollingRetention = (double)lastActivityUser / registeredUser * 2;
+            var rollingRetention = ((double)lastActivityUser / registeredUser) * 2;
+            
 
             return Json( new {rollingRetention} );
         }
 
+        public JsonResult CalculateLifeSpanAllUsers()
+        {
+            List<User> users = _db.Users.ToList();
+            var UsersLifeSpan = new List<int>();
+            foreach (User user in users)
+            {
+                TimeSpan lifeSpan = user.DateLastActivity.Date.Subtract(user.DateRegistration.Date);
+                UsersLifeSpan.Add(lifeSpan.Days);
+            }
+
+            var lifespan = UsersLifeSpan.Distinct()
+                .OrderBy(x => x)
+                .Select(x => new UserLifeSpan()
+                {
+                    LifeSpanDays = x,
+                    Count = UsersLifeSpan.Count(lifeSpan => lifeSpan == x)
+                });
+
+            return Json(new { lifespan });
+        }
     }
 }
+    

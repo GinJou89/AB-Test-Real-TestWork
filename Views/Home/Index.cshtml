@@ -26,10 +26,13 @@
         </div>
     </div>
     <div class="mt-1 ml-5">
-        <label>Rolling Retention</label>
-        <input id="daycount" class="tw_daycount" type="text"value="" />
-        <label>day</label>
-        <button onclick="calculate()" class="tw_button">Calculate</button>
-        <label id="result"></label>
+        <div>
+            <label>Rolling Retention</label>
+            <input id="daycount" class="tw_daycount" type="text" value="" />
+            <label>day</label>
+            <button onclick="calculate()" class="tw_button">Calculate</button>
+            <label id="result"></label>
+        </div>
+        <canvas id="myChart" width="400" height="400"></canvas>
     </div>
 </div>
