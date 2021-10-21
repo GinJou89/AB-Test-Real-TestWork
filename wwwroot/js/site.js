@@ -5,7 +5,6 @@
 var myChart;
 
 function calculate() {
-    
     let day = $('#daycount').val();
     let lifeSpanDay = [];
     let Count = [];
@@ -47,7 +46,6 @@ function calculate() {
                 });
             })
     }
-    
 }
 
 function addUserToTable() {
