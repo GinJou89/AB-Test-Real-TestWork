@@ -12,6 +12,7 @@ namespace AB_Test_Real_TestWork.Models
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         {
+            Database.EnsureCreated();
         }
     }
 }

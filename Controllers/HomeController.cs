@@ -23,18 +23,19 @@ namespace AB_Test_Real_TestWork.Controllers
 
         public IActionResult Index()
         {
-            List<User> users = _db.Users.ToList();
-            ViewBag.Users = users.TakeLast(19).Reverse();
             return View();
         }   
         [HttpPost]
-        public IActionResult AddUser(User user)
+        public IActionResult AddUsers([FromBody]List<User> users)
         {
-            if (ModelState.IsValid)
+            foreach (var user in users)
             {
-                _db.Users.Add(user);
-                _db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    _db.Users.Add(user);
+                }
             }
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -53,7 +54,7 @@ namespace AB_Test_Real_TestWork.Controllers
             DateTime date = DateTime.Now.Subtract(new TimeSpan(days, 0, 0, 0));
             var registeredUser = _db.Users.Count(x => x.DateRegistration <= date);
             var lastActivityUser = _db.Users.Count(x => x.DateLastActivity >= date);
-            var rollingRetention = ((double)lastActivityUser / registeredUser) * 2;
+            var rollingRetention = (double)lastActivityUser / registeredUser * 100;
             
 
             return Json( new {rollingRetention} );
@@ -81,6 +82,7 @@ namespace AB_Test_Real_TestWork.Controllers
 
             return Json(new { lifespan });
         }
+
     }
 }
     

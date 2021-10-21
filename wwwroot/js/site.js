@@ -13,7 +13,7 @@ function calculate() {
         $.post("/Home/GetUserRetention", { days: day })
             .done(function (data) {
                 console.log(data.rollingRetention)
-                $('#result').text(data.rollingRetention.toFixed(2))
+                $('#result').text(data.rollingRetention.toFixed(2) + '%')
             });
         $.post("/Home/CalculateLifeSpanAllUsers")
             .done(function (data) {
@@ -42,9 +42,6 @@ function calculate() {
                     },
                     options: {
                         scales: {
-                            y: {
-                                beginAtZero: true
-                            }
                         }
                     }
                 });
@@ -52,4 +49,18 @@ function calculate() {
     }
     
 }
+
+function addUserToTable() {
+    id = $('#Id').val()
+    dateRegistration = $('#dateRegistration').val()
+    dateLastActivity = $('#datelastActivity').val()
+    if (id != '' && dateRegistration != '' && dateLastActivity != '') {
+        $('#dataTable').append('<tr id="tablebody"><td>' + id + '</td><td>' + dateRegistration + '</td><td>' + dateLastActivity + '</td></tr>')
+        id = $('#Id').val('');
+        dateRegistration = $('#dateRegistration').val('');
+        dateLastActivity = $('#datelastActivity').val('');
+    }
+}
+
+
 

@@ -11,12 +11,8 @@ namespace AB_Test_Real_TestWork.Models
         /// <summary>
         /// ID Пользователя
         /// </summary>
+        [Required]
         public int Id { get; set; }
-        /// <summary>
-        /// Имя пользователя
-        /// </summary>
-        [Required(ErrorMessage = "Не указано Имя")]
-        public string Name { get; set; }
         /// <summary>
         /// Дата регистрации
         /// </summary>
