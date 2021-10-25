@@ -26,13 +26,20 @@ namespace AB_Test_Real_TestWork.Controllers
             return View();
         }   
         [HttpPost]
-        public IActionResult AddUsers([FromBody]List<User> users)
+        public IActionResult AddUsers(User[] users)
         {
             foreach (var user in users)
             {
                 if (ModelState.IsValid)
                 {
-                    _db.Users.Add(user);
+                    if (_db.Users.Any(x => x.Id == user.Id))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        _db.Users.Add(user);
+                    }
                 }
             }
             _db.SaveChanges();

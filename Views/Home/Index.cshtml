@@ -7,18 +7,18 @@
 <div class=" row ml-5 m-0 p-2">
     <div>
         <label>ID</label>
-        <input class="tw_input" type="text" id="Id" placeholder="Id" value="" />
+        <input class="tw_input" type="text" id="Id" value="" />
         <label>DateRegistration</label>
-        <input class="tw_input" type="date" id="dateRegistration" value="" />
+        <input class="tw_input" type="text" id="dateRegistration" value="" />
         <label>DateLastActivity</label>
-        <input class="tw_input" type="date" id="datelastActivity" value="" />
+        <input class="tw_input" type="text" id="datelastActivity" value="" />
         <button class="tw_button" onclick="addUserToTable()" name="search">Add</button>
     <div>
         <table id="dataTable" class="table mt-3">
             <tr><th>ID</th><th>DateRegistration</th><th>DateLastActivity</th></tr>
         </table>
     </div>
-    <button class="tw_button" name="search">Save</button>
+    <button onclick="savetableToDb()" class="tw_button" name="search">Save</button>
     </div>
     <div class="mt-1 ml-5">
         <div>
@@ -28,6 +28,12 @@
             <button onclick="calculate()" class="tw_button">Calculate</button>
             <label id="result"></label>
         </div>
+        <div>
+            <label>Ось X кол-во дней "Жизни" пользователей</label></br>
+            <label>Ось Y кол-во пользователей</label>
+        </div>
         <canvas id="myChart" width="300" height="300"></canvas>
     </div>
 </div>
+
+

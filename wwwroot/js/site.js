@@ -53,12 +53,26 @@ function addUserToTable() {
     dateRegistration = $('#dateRegistration').val()
     dateLastActivity = $('#datelastActivity').val()
     if (id != '' && dateRegistration != '' && dateLastActivity != '') {
-        $('#dataTable').append('<tr id="tablebody"><td>' + id + '</td><td>' + dateRegistration + '</td><td>' + dateLastActivity + '</td></tr>')
+        $('#dataTable').append('<tr class="tablebody"><td id="id">' + id + '</td><td id="dateRegistration">' + dateRegistration + '</td><td id="dateLastActivity">' + dateLastActivity + '</td></tr>')
         id = $('#Id').val('');
         dateRegistration = $('#dateRegistration').val('');
         dateLastActivity = $('#datelastActivity').val('');
     }
 }
 
-
+function savetableToDb() {
+    let id;
+    let dateRegistration;
+    let dateLastActivity;
+    let users = []
+    let user = {}
+    $.each($('.tablebody'), function (index, value) {
+        id = value.children[0].textContent
+        dateRegistration = moment(value.children[1].textContent, 'DD.MM.YYYY').format("MM.DD.YYYY");
+        dateLastActivity = moment(value.children[2].textContent, 'DD.MM.YYYY').format("MM.DD.YYYY");
+        user = { Id: id, DateRegistration: dateRegistration, DateLastActivity: dateLastActivity }
+        users.push(user)
+    });
+    $.post('/Home/AddUsers', { 'users': users })
+}
 

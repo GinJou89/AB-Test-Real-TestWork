@@ -11,7 +11,6 @@ namespace AB_Test_Real_TestWork.Models
         /// <summary>
         /// ID Пользователя
         /// </summary>
-        [Required]
         public int Id { get; set; }
         /// <summary>
         /// Дата регистрации
